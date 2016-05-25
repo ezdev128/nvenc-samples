@@ -1,0 +1,35 @@
+Introduction:
+-------------
+This is Release 4.0 of NVENC SDK. This SDK release is backward compatible
+with NVENC SDK 1.0 (released in September 2012), 2.0 (released in March 2013) and 3.0 (released in August 2013). 
+
+Applications or source projects that use the NVIDIA NVENC Video Encoder API require:
+* Windows: NVIDIA driver version 340.52 or higher (340.xx)
+* Linux: NVIDIA driver from R340 release
+* NVIDIA GPU based on the Kepler and Maxwell architecture
+
+-----------------------------------------------------------------------------
+
+This package contains:
+
+1) nvEncoder Sample application source code 
+   - Note that this sample application supports NVENC 4.0 API.
+2) NVENC - NVIDIA Video Encoder API header 
+   - [.\include\nvEncodeAPI.h]
+3) NVENC - NVIDIA Video Encoder Interface Programming Guide
+   - [.\doc\NVENC_VideoEncoder_API_ProgGuide.pdf] 
+4) NVENC - NVIDIA Kepler Hardware Video Encoder (Application Note)
+   - [.\doc\NVENC_DA-06209-001_v04.pdf]
+5) NVENC - Video Encoder API Reference Manual (CHM)
+   - [.\doc\nvEncodeAPI_v4.0.chm] 
+   - Both of these documents are up to date and is the reference API manual
+   
+------------------------------------------------------------------------------
+Changes and new features in NVENC SDK 4.0 as compared to NVENC SDK 3.0
+
+1) Support for NV Maxwell class GPUs and Software support for new Hardware features available in the architecture
+2) Adpative Quanatization
+3) Advanced Rate Control
+4) Intra Refresh
+5) Two sessions of NVENC allowed on GeFroce cards (Windows only)
+6) Several bug-fixes

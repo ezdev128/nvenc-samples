@@ -1,0 +1,112 @@
+<entry>
+    <name>CUDA Video Decoder GL API</name>
+    <owner>Eric Young</owner>
+    <group>CUDA</group>
+    <description><![CDATA[This sample demonstrates how to efficiently use the CUDA Video Decoder API to decode video sources based on MPEG-2, VC-1, and H.264.  YUV to RGB conversion of video is accomplished with CUDA kernel.  The output result is rendered to a OpenGL surface.  The decoded video is black, but can be enabled with -displayvideo added to the command line.  Requires Compute Capability 1.1 or higher.]]></description>
+    <project_path>3_Imaging\cudaDecodeGL</project_path>
+    <screenshot_sm>doc\sshot_sm.jpg</screenshot_sm>
+    <screenshot_md>doc\sshot_md.jpg</screenshot_md>
+    <screenshot_lg>doc\sshot_lg.jpg</screenshot_lg>
+    <userguide></userguide>
+    <video></video>
+    <whitepaper>doc\nvcuvid.pdf</whitepaper>
+    <executable>Bin\win32\release\cudaDecodeGL.exe</executable>
+    <minspec>SM 1.1</minspec>
+    <keywords>GPGPU,CUDA,video,opengl</keywords>
+    <scope>2:Graphics Interop,2:Image Processing,2:Data Compression,2:Video Codecs,2:Computer Vision</scope>
+    <featured_date>050501</featured_date>
+    <files>
+        <file>data\NV12ToARGB_drvapi_Win32.ptx</file>
+        <file>data\NV12ToARGB_drvapi_x64.ptx</file>
+        <file>data\plush1_720p_10s.m2v</file>
+    </files>
+    <cudaapi>cuDeviceGet</cudaapi>
+    <cudaapi>cuDeviceGetAttribute</cudaapi>
+    <cudaapi>cuDeviceComputeCapability</cudaapi>
+    <cudaapi>cuDeviceGetCount</cudaapi>
+    <cudaapi>cuDeviceGetName</cudaapi>
+    <cudaapi>cuDeviceTotalMem</cudaapi>
+    <cudaapi>cuGLCtxCreate</cudaapi>
+    <cudaapi>cuGLGetDevice</cudaapi>
+    <cudaapi>cuModuleLoad</cudaapi>
+    <cudaapi>cuModuleUnload</cudaapi>
+    <cudaapi>cuModuleGetFunction</cudaapi>
+    <cudaapi>cuModuleGetGlobal</cudaapi>
+    <cudaapi>cuModuleLoadDataEx</cudaapi>
+    <cudaapi>cuModuleGetTexRef</cudaapi>
+    <cudaapi>cuGLMapResources</cudaapi>
+    <cudaapi>cuGLUnmapResources</cudaapi>
+    <cudaapi>cuGLRegisterResource</cudaapi>
+    <cudaapi>cuGLUnregisterResource</cudaapi>
+    <cudaapi>cuGLResourceSetMapFlags</cudaapi>
+    <cudaapi>cuGLResourceGetMappedPointer</cudaapi>
+    <cudaapi>cuGLResourceGetMappedPitch</cudaapi>
+    <cudaapi>cuParamSetv</cudaapi>
+    <cudaapi>cuParamSeti</cudaapi>
+    <cudaapi>cuParamSetSize</cudaapi>
+    <cudaapi>cuLaunchGridAsync</cudaapi>
+    <cudaapi>cuCtxCreate</cudaapi>
+    <cudaapi>cuMemAlloc</cudaapi>
+    <cudaapi>cuMemFree</cudaapi>
+    <cudaapi>cuMemAllocHost</cudaapi>
+    <cudaapi>cuMemFreeHost</cudaapi>
+    <cudaapi>cuMemcpyDtoHAsync</cudaapi>
+    <cudaapi>cuMemsetD8</cudaapi>
+    <cudaapi>cuStreamCreate</cudaapi>
+    <cudaapi>cuCtxPushCurrent</cudaapi>
+    <cudaapi>cuCtxPopCurrent</cudaapi>
+    <cudaapi>cuvidCreateDecoder</cudaapi>
+    <cudaapi>cuvidDecodePicture</cudaapi>
+    <cudaapi>cuvidMapVideoFrame</cudaapi>
+    <cudaapi>cuvidUnmapVideoFrame</cudaapi>
+    <cudaapi>cuvidDestroyDecoder</cudaapi>
+    <cudaapi>cuvidCtxLockCreate</cudaapi>
+    <cudaapi>cuvidCtxLockDestroy</cudaapi>
+    <cudaapi>cuCtxDestroy</cudaapi>
+    <keyconcepts level="advanced">Graphics Interop</keyconcepts>
+    <keyconcepts level="advanced">Image Processing</keyconcepts>
+    <keyconcepts level="advanced">Video Compression</keyconcepts>
+
+    <!-- *** Additional project definition information *** -->
+    <!-- Libraries that the project should be linked against. Document may contain any number of "libraries" elements. -->
+    <!-- Attributes "os" and "arch" are optional and may be used in any combination. -->
+    <!-- "framework" attribute will be ignored on platforms other then Mac OS X -->
+    <library>GLU</library>
+    <library>GL</library>
+    <library os="windows">nvcuvid</library>
+    <library os="linux">X11</library>
+    <library os="linux">GLEW</library>
+    <library os="linux">glut</library>
+    <library os="macosx" framework="true">GLUT</library>
+
+    <!-- Either absolute or relative to sample -->
+    <library-path os="windows" arch="x86_64">../../common/lib/x64</library-path>
+    <library-path os="windows" arch="Win32">../../common/lib/Win32</library-path>
+    <library-path os="linux" arch="x86_64">../../common/lib/linux/x86_64</library-path>
+    <library-path os="linux" arch="i686">../../common/lib/linux/i686</library-path>
+    <library-path os="macosx">../../common/lib/darwin</library-path>
+
+    <!-- Either absolute or relative to sample -->
+    <include-path>./</include-path>
+    <include-path>../</include-path>
+    <include-path>../../common/inc</include-path>
+    
+    <!-- Can be either "separate" or "whole", omitting this element means that sample can be compiled either way -->
+    <devicecompilation>whole</devicecompilation>
+
+    <!-- These options will be passed to NVCC compiler as is and for all files -->
+    
+    <nvcc-compiler file="NV12toARGB_drvapi.cu"></nvcc-compiler>
+    <sm-arch>sm11</sm-arch>
+    <sm-arch>sm20</sm-arch>
+    <sm-arch>sm30</sm-arch>
+
+    <!-- One of "exe|dll|lib" (exe is default) -->
+    <type>exe</type>
+
+    <!-- By default IDE will open file "samplename.(cu|cpp) -->
+    <primary-file>videoDecodeGL.cpp</primary-file>
+
+    <!-- Collection of [OS][:arch] tokens -->
+    <supported-env>linux:x86_64, linux:i686, windows7, macosx:x86_64, macosx:i686</supported-env>
+</entry>
